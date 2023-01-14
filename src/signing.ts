@@ -83,11 +83,11 @@ export async function signAabFile(
     core.debug(`Found 'jarsigner' @ ${jarSignerPath}`);
     const args = [
         '-keystore', signingKeyFile,
-        '-storepass', keyStorePassword,
+        '-storepass', `"${keyStorePassword}"`,
     ];
 
     if (keyPassword) {
-        args.push('-keypass', keyPassword);
+        args.push('-keypass', `"${keyPassword}"`);
     }
 
     args.push(aabFile, alias);
